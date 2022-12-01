@@ -1,2 +1,15 @@
-@import "~bootstrap/scss/bootstrap"; 
+@import "~bootstrap/scss/bootstrap";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.link {
+    text-decoration: none;
+    color: white ;
+}
+
+.favorite{
+  color:red;
+}
+
+.dont_like_yet{
+  color:blue;
+}
