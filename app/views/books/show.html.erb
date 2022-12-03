@@ -52,14 +52,14 @@
             <%= a_comment.user.name %></span>
             <span><%= a_comment.comment %></span>
             <% if a_comment.user==current_user %>
-              <%= link_to 'Destroy', url:book_book_comment_path(a_comment.book_id,a_comment.id),id: a_comment.id, method: :delete, class:"btn btn-sm btn-danger" %>
+              <%= link_to 'Destroy', book_book_comment_path(@book, a_comment), method: :delete, class:"btn btn-sm btn-danger" %>
             <% end %>
           </p>
           <% end %>
         <% end %>
       </div>
       <div>
-        <%= form_with model:[@book,@book_comment],url:book_book_comments_path(@book.id), method: :post do |f| %>
+        <%= form_with model:[@book,@book_comment], url:book_book_comments_path(@book.id), method: :post do |f| %>
           <%= f.text_area :comment, rows:'5',placeholder:"コメントをここに" %>
           <%= f.submit "送信" %>
         <% end %>
