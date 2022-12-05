@@ -1,0 +1,4 @@
+$('#post').html("<%= j(render "book_comments/comment", book_comments: @book_comments, book: @book ) %>");
+$("text_area").val("");
+$("#text").val("");
+<!--valは、text_areaと、text_field(idで指定)を空白にしている-->
