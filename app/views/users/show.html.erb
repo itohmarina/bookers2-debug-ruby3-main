@@ -15,3 +15,41 @@
     </div>
   </div>
 </div>
+
+<h2>投稿数の前日比・前週比</h2>
+<table border="1" cellspacing="0">
+  <tr>
+    <th scope="col" width="200">今日の投稿数</th>
+    <th scope="col" width="200">前日の投稿数</th>
+    <th scope="col" width="100">前日比</th>
+  </tr>
+  <tr>
+    <td>
+      <%= @today_book.count %>
+    </td>
+    <td>
+      <%= @yesterday_book.count %>
+    </td>
+    <td>
+      <%= @today_book.count.to_i-@yesterday_book.count.to_i %>
+    </td>
+  </tr>
+</table>
+<table border="1" cellspacing="0" >
+  <tr>
+    <th scope="col" width="200">今週の投稿数</th>
+    <th scope="col" width="200">前日の投稿数</th>
+    <th scope="col" width="100">前週比</th>
+  </tr>
+  <tr>
+    <td>
+      <%= @this_week_book.count %>
+    </td>
+    <td>
+      <%= @last_week_book.count %>
+    </td>
+    <td>
+      <%=
+    </td>
+  </tr>
+</table>
