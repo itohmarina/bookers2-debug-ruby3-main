@@ -13,7 +13,9 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all.select('books.*', 'count(favorites.id) AS favs').left_joins(:favorites).group('books.id').order('favs desc')
+    #selectでbooksテーブルを取得し、favorittes.idのカウントをfavとして、favoritesテーブルに結合し、
+    #books.idが重複しているものをまとめ（一番小さいidの1件だけ表示）
+    @books = Book.select('books.*', 'count(favorites.id) AS favs').left_joins(:favorites).group('books.id').order('favs desc')
     @book=Book.new
     @user=current_user
   end
