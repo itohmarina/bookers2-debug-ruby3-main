@@ -1,0 +1,15 @@
+<h2><%="#{@another_chat_room_user.user.name}さんとのチャット"%></h2>
+
+<% @chat_messages.each do |m| %>
+  <% if m.user_id == current_user.id %>
+    <div>あなた:<%= m.body %></div>
+  <% else %>
+    <div><%= image_tag @another_chat_room_user.user.get_profile_image, size:'50x50'%>:<%= m.body %></div>
+  <% end %>
+<% end %>
+
+<%= form_with model: @chat_message, method: :post do |f| %>
+  <%= f.text_field :body %>
+  <%= f.hidden_field :chat_room_id, :value => @chat_room.id %>
+  <%= f.submit "送信", class:"btn btn-info" %>
+<% end %>

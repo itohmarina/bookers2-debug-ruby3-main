@@ -20,6 +20,12 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as:'followers'
   end
 
+  resources :matching, only: [:index]
+
+  resources :chat_rooms, only: [:create, :show]
+
+  resources :chat_messages, only: [:create]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

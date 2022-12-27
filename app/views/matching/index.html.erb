@@ -1,0 +1,8 @@
+<h4><%= @matching_users.size %>人と相互フォローしています</h4>
+<% @mathing_users.each do |matching_user| %>
+    <ul>
+        <li>
+            <%= link_to matching_user.followed.name,"#" %>
+        </li>
+    </ul>
+<% end %>

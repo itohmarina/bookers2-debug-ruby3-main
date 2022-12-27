@@ -18,6 +18,11 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   #フォロワーを参照しにいく
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  
+  
+  has_many :chat_room_users, foreign_key:"user_id", dependent: :destroy
+  has_many :chat_rooms, through: :chat_room_users
+  has_many :chat_messages, foreign_key:"user_id"
 
 
   validates :name, presence:true, length: { minimum: 2, maximum: 20 }, uniqueness: true
