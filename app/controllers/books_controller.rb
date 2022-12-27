@@ -5,15 +5,15 @@ class BooksController < ApplicationController
     @user=User.find(@book.user_id)
     @book_comments=@book.book_comments
     @book_comment=BookComment.new
-    
+
     unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
       current_user.view_counts.create(book_id: @book.id)
     end
-    
+
   end
 
   def index
-    @books = Book.all
+    @books = Book.all.select('books.*', 'count(favorites.id) AS favs').left_joins(:favorites).group('books.id').order('favs desc')
     @book=Book.new
     @user=current_user
   end
