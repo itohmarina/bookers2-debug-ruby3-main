@@ -23,6 +23,8 @@ class User < ApplicationRecord
   has_many :chat_room_users, foreign_key:"user_id", dependent: :destroy
   has_many :chat_rooms, through: :chat_room_users
   has_many :chat_messages, foreign_key:"user_id"
+  
+  has_many :view_counts, dependent: :destroy
 
 
   validates :name, presence:true, length: { minimum: 2, maximum: 20 }, uniqueness: true
