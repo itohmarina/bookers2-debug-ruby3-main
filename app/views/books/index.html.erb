@@ -9,6 +9,25 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'index', books: @books %>
+
+      <h2>7日分の投稿数</h2>
+      <table border="1" cellspacing="0">
+        <tr>
+          <% for num in 1..6 do %>
+            <% i=7-num %>
+            <th scope="col" width="50"><%= i.to_s+"日前" %></th>
+          <% end %>
+          <th scope="col" width="50">今日</th>
+        </tr>
+        <tr>
+          <% for num in 1..6 do %>
+            <% i=7-num %>
+            <td><%= Book.created_days_ago(i).count %></td>
+          <% end %>
+          <td><%= Book.created_today.count %></td>
+        </tr>
+      </table>
+
     </div>
   </div>
 </div>
